@@ -37,7 +37,10 @@ namespace LinesDataFetcher
                 {
                     var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     go.transform.position = node.m_position;
-                    go.transform.localScale *= 30;
+                    Material newMat = new Material(Shader.Find("Hidden/DayNight/Skybox"));
+                    newMat.color = new Color(255, 153, 51);
+                    go.GetComponent<MeshRenderer>().material = newMat;
+                    go.transform.localScale *= 10;
                     count++;
                 }
                 Debug.Log("The number of nodes (with count) " + count + "the number of nodes (without) " + nodes.Length + "---" + NetManager.instance.m_nodeCount);
@@ -47,14 +50,16 @@ namespace LinesDataFetcher
                 NetNode[] nodes = NetManager.instance.m_nodes.m_buffer;
                 foreach (var node in nodes)
                 {
-                    if (node.m_flags.ToString().Contains(NetNode.Flags.Junction.ToString()))
+                    if (node.m_flags.ToString().Contains(NetNode.Flags.Junction.ToString()) &&
+                        !(node.m_flags.ToString().Contains(NetNode.Flags.OneWayIn.ToString()) &&
+                        node.m_flags.ToString().Contains(NetNode.Flags.OneWayOut.ToString())))
                     {
                         Debug.Log(node.m_flags.ToString());
                         var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                         go.transform.position = node.m_position;
-                        go.transform.localScale *= 30;
-                        Material newMat = new Material(Shader.Find("Custom/Particles/Additive (Soft)"));
-                        newMat.color = new Color(34, 139, 34);
+                        go.transform.localScale *= 20;
+                        Material newMat = new Material(Shader.Find("Custom/Overlay/TransportConnection"));
+                        //newMat.SetColor("color", new Color(0, 244, 0));
                         go.GetComponent<MeshRenderer>().material = newMat;
                         //var go = new GameObject();
                         //var spRend = go.AddComponent<SpriteRenderer>() as SpriteRenderer;

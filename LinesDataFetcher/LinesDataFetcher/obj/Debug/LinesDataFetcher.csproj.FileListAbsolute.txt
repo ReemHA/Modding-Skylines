@@ -13,3 +13,13 @@ C:\Users\legion\source\repos\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDa
 C:\Users\legion\source\repos\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.dll
 C:\Users\legion\source\repos\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.pdb
 C:\Users\legion\source\repos\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.csprojAssemblyReference.cache
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\bin\Debug\LinesDataFetcher.dll
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\bin\Debug\LinesDataFetcher.pdb
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\bin\Debug\PopsApiWrapper.dll
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.csprojAssemblyReference.cache
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.csproj.CoreCompileInputs.cache
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.csproj.CopyComplete
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.dll
+C:\Users\legion\source\repos\Modding-Skylines\LinesDataFetcher\LinesDataFetcher\obj\Debug\LinesDataFetcher.pdb
