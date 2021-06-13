@@ -8,7 +8,6 @@ namespace LinesDataFetcher
 {
     public class Fetcher : ThreadingExtensionBase
     {
-        JSON json;
         public override void OnAfterSimulationFrame()
         {
             base.OnAfterSimulationFrame();
@@ -70,6 +69,85 @@ namespace LinesDataFetcher
                     }
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StringBuilder txtLines = new StringBuilder();
+                NetNode[] nodes = NetManager.instance.m_nodes.m_buffer;
+                NetSegment[] segments = NetManager.instance.m_segments.m_buffer;
+                JArray jArray = new JArray();
+                foreach (var node in nodes)
+                {
+                    if (node.m_flags.ToString().Contains(NetNode.Flags.Junction.ToString()) &&
+                        !(node.m_flags.ToString().Contains(NetNode.Flags.OneWayIn.ToString()) &&
+                        node.m_flags.ToString().Contains(NetNode.Flags.OneWayOut.ToString())))
+                    {
+                        JSON json = new JSON();
+                        json.Add("position", JSON.Serialize(node.m_position));
+                        JArray segArray = new JArray();
+                        JSON temp = new JSON();
+                        AddSegmentsToArray(segments, node, segArray);
+                        jArray.Add(json);
+                    }
+                }
+                var jsonString = jArray.CreateString();
+                txtLines.Append(jsonString);
+                StreamWriter outputFile = new StreamWriter("Files/nodes_info.txt");
+                outputFile.WriteLine(txtLines);
+                outputFile.Close();
+            }
+        }
+
+        private void AddSegmentsToArray(NetSegment[] segments, NetNode node, JArray segArray)
+        {
+            JSON temp = new JSON();
+            temp = AddSegmentToJson(node.m_segment1, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+            temp = AddSegmentToJson(node.m_segment2, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+            temp = AddSegmentToJson(node.m_segment3, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+            temp = AddSegmentToJson(node.m_segment4, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+            temp = AddSegmentToJson(node.m_segment5, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+            temp = AddSegmentToJson(node.m_segment6, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+            temp = AddSegmentToJson(node.m_segment7, segments);
+            if (temp != null)
+            {
+                segArray.Add(temp);
+            }
+        }
+
+        private JSON AddSegmentToJson(ushort index, NetSegment[] segments)
+        {
+            JSON json = new JSON();
+            if (index != 0)
+            {
+                json.Add("position", JSON.Serialize(segments[index].m_middlePosition));
+                json.Add("traffic buffer", segments[index].m_trafficBuffer);
+                json.Add("traffic density", segments[index].m_trafficDensity);
+                return json;
+            }
+            return null;
         }
     }
 }
